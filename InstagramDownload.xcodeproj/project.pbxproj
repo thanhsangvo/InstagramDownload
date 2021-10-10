@@ -3,23 +3,54 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90734D3262981A80009528A /* APIGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90734D2262981A80009528A /* APIGraph.swift */; };
+		E90734D72629834E0009528A /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E90734D62629834E0009528A /* FacebookCore */; };
+		E90734D92629834E0009528A /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E90734D82629834E0009528A /* FacebookLogin */; };
+		E90734DB2629834E0009528A /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = E90734DA2629834E0009528A /* FacebookShare */; };
+		E90A56A926E7B58800839ED2 /* ContextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90A56A826E7B58800839ED2 /* ContextModifier.swift */; };
 		E91BDD7326219A4300AC3691 /* InstagramDownloadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91BDD7226219A4300AC3691 /* InstagramDownloadApp.swift */; };
 		E91BDD7526219A4300AC3691 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91BDD7426219A4300AC3691 /* ContentView.swift */; };
 		E91BDD7726219A4500AC3691 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E91BDD7626219A4500AC3691 /* Assets.xcassets */; };
 		E91BDD7A26219A4500AC3691 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E91BDD7926219A4500AC3691 /* Preview Assets.xcassets */; };
+		E91BDD8526219BFE00AC3691 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91BDD8426219BFE00AC3691 /* Home.swift */; };
+		E92FD9DC26E4EEC8000FED45 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92FD9DB26E4EEC8000FED45 /* PersistenceController.swift */; };
+		E92FDA0026E4F8ED000FED45 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E92FD9FE26E4F8ED000FED45 /* Model.xcdatamodeld */; };
+		E932F72726E4932800625C28 /* SearchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E932F72626E4932800625C28 /* SearchImage.swift */; };
+		E96406D226E6772E00DCE95A /* Insta+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96406D026E6772E00DCE95A /* Insta+CoreDataClass.swift */; };
+		E96406D326E6772E00DCE95A /* Insta+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96406D126E6772E00DCE95A /* Insta+CoreDataProperties.swift */; };
+		E97B81C826E3C48B001FF04E /* DownloadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B81C726E3C48B001FF04E /* DownloadedView.swift */; };
+		E97B81CC26E3CC31001FF04E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B81CB26E3CC31001FF04E /* Card.swift */; };
+		E97D9D692711AC76006F8684 /* DownloadVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D9D682711AC76006F8684 /* DownloadVideoView.swift */; };
+		E97D9D6C2711CB9F006F8684 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E97D9D6B2711CB9F006F8684 /* Alamofire */; };
+		E9AE063926E77F4500E52A32 /* ImageLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE063826E77F4500E52A32 /* ImageLayout.swift */; };
+		E9AE063B26E79D8B00E52A32 /* LayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE063A26E79D8B00E52A32 /* LayoutType.swift */; };
+		E9DE4F7A262B20B4001C18CE /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = E9DE4F79262B20B4001C18CE /* SwiftyJSON */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E90734D2262981A80009528A /* APIGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGraph.swift; sourceTree = "<group>"; };
+		E90A56A826E7B58800839ED2 /* ContextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextModifier.swift; sourceTree = "<group>"; };
 		E91BDD6F26219A4300AC3691 /* InstagramDownload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramDownload.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E91BDD7226219A4300AC3691 /* InstagramDownloadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramDownloadApp.swift; sourceTree = "<group>"; };
 		E91BDD7426219A4300AC3691 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E91BDD7626219A4500AC3691 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E91BDD7926219A4500AC3691 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E91BDD7B26219A4500AC3691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E91BDD8426219BFE00AC3691 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		E92FD9DB26E4EEC8000FED45 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		E92FD9FF26E4F8ED000FED45 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		E932F72626E4932800625C28 /* SearchImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImage.swift; sourceTree = "<group>"; };
+		E96406D026E6772E00DCE95A /* Insta+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Insta+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E96406D126E6772E00DCE95A /* Insta+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Insta+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E97B81C726E3C48B001FF04E /* DownloadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedView.swift; sourceTree = "<group>"; };
+		E97B81CB26E3CC31001FF04E /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		E97D9D682711AC76006F8684 /* DownloadVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVideoView.swift; sourceTree = "<group>"; };
+		E9AE063826E77F4500E52A32 /* ImageLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLayout.swift; sourceTree = "<group>"; };
+		E9AE063A26E79D8B00E52A32 /* LayoutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +58,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E97D9D6C2711CB9F006F8684 /* Alamofire in Frameworks */,
+				E90734D92629834E0009528A /* FacebookLogin in Frameworks */,
+				E90734D72629834E0009528A /* FacebookCore in Frameworks */,
+				E9DE4F7A262B20B4001C18CE /* SwiftyJSON in Frameworks */,
+				E90734DB2629834E0009528A /* FacebookShare in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,9 +89,13 @@
 			isa = PBXGroup;
 			children = (
 				E91BDD7226219A4300AC3691 /* InstagramDownloadApp.swift */,
-				E91BDD7426219A4300AC3691 /* ContentView.swift */,
+				E91BDD8226219B2000AC3691 /* View */,
+				E932F72826E4950800625C28 /* SQLite */,
+				E91BDD8326219B2700AC3691 /* ViewModel */,
+				E932F72526E492A800625C28 /* DownloadView */,
 				E91BDD7626219A4500AC3691 /* Assets.xcassets */,
 				E91BDD7B26219A4500AC3691 /* Info.plist */,
+				E92FD9FE26E4F8ED000FED45 /* Model.xcdatamodeld */,
 				E91BDD7826219A4500AC3691 /* Preview Content */,
 			);
 			path = InstagramDownload;
@@ -67,6 +107,55 @@
 				E91BDD7926219A4500AC3691 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E91BDD8226219B2000AC3691 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E91BDD7426219A4300AC3691 /* ContentView.swift */,
+				E91BDD8426219BFE00AC3691 /* Home.swift */,
+				E97D9D682711AC76006F8684 /* DownloadVideoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E91BDD8326219B2700AC3691 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E90734D2262981A80009528A /* APIGraph.swift */,
+				E97B81CB26E3CC31001FF04E /* Card.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E932F72426E4928100625C28 /* ImageLayoutView */ = {
+			isa = PBXGroup;
+			children = (
+				E9AE063826E77F4500E52A32 /* ImageLayout.swift */,
+				E90A56A826E7B58800839ED2 /* ContextModifier.swift */,
+				E9AE063A26E79D8B00E52A32 /* LayoutType.swift */,
+			);
+			path = ImageLayoutView;
+			sourceTree = "<group>";
+		};
+		E932F72526E492A800625C28 /* DownloadView */ = {
+			isa = PBXGroup;
+			children = (
+				E932F72626E4932800625C28 /* SearchImage.swift */,
+				E97B81C726E3C48B001FF04E /* DownloadedView.swift */,
+				E932F72426E4928100625C28 /* ImageLayoutView */,
+			);
+			path = DownloadView;
+			sourceTree = "<group>";
+		};
+		E932F72826E4950800625C28 /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				E96406D026E6772E00DCE95A /* Insta+CoreDataClass.swift */,
+				E96406D126E6772E00DCE95A /* Insta+CoreDataProperties.swift */,
+				E92FD9DB26E4EEC8000FED45 /* PersistenceController.swift */,
+			);
+			path = SQLite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +174,13 @@
 			dependencies = (
 			);
 			name = InstagramDownload;
+			packageProductDependencies = (
+				E90734D62629834E0009528A /* FacebookCore */,
+				E90734D82629834E0009528A /* FacebookLogin */,
+				E90734DA2629834E0009528A /* FacebookShare */,
+				E9DE4F79262B20B4001C18CE /* SwiftyJSON */,
+				E97D9D6B2711CB9F006F8684 /* Alamofire */,
+			);
 			productName = InstagramDownload;
 			productReference = E91BDD6F26219A4300AC3691 /* InstagramDownload.app */;
 			productType = "com.apple.product-type.application";
@@ -112,6 +208,11 @@
 				Base,
 			);
 			mainGroup = E91BDD6626219A4300AC3691;
+			packageReferences = (
+				E90734D52629834E0009528A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				E9DE4F78262B20B4001C18CE /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				E97D9D6A2711CB9F006F8684 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = E91BDD7026219A4300AC3691 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,8 +239,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E96406D226E6772E00DCE95A /* Insta+CoreDataClass.swift in Sources */,
+				E97B81C826E3C48B001FF04E /* DownloadedView.swift in Sources */,
 				E91BDD7526219A4300AC3691 /* ContentView.swift in Sources */,
+				E90A56A926E7B58800839ED2 /* ContextModifier.swift in Sources */,
+				E97B81CC26E3CC31001FF04E /* Card.swift in Sources */,
+				E92FDA0026E4F8ED000FED45 /* Model.xcdatamodeld in Sources */,
+				E91BDD8526219BFE00AC3691 /* Home.swift in Sources */,
+				E97D9D692711AC76006F8684 /* DownloadVideoView.swift in Sources */,
 				E91BDD7326219A4300AC3691 /* InstagramDownloadApp.swift in Sources */,
+				E96406D326E6772E00DCE95A /* Insta+CoreDataProperties.swift in Sources */,
+				E9AE063926E77F4500E52A32 /* ImageLayout.swift in Sources */,
+				E932F72726E4932800625C28 /* SearchImage.swift in Sources */,
+				E9AE063B26E79D8B00E52A32 /* LayoutType.swift in Sources */,
+				E92FD9DC26E4EEC8000FED45 /* PersistenceController.swift in Sources */,
+				E90734D3262981A80009528A /* APIGraph.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,11 +381,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"InstagramDownload/Preview Content\"";
+				DEVELOPMENT_TEAM = QSGR9KYE4B;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InstagramDownload/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -279,7 +395,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.thanhsangvo.InstagramDownload;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -288,11 +404,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"InstagramDownload/Preview Content\"";
+				DEVELOPMENT_TEAM = QSGR9KYE4B;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InstagramDownload/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +418,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.thanhsangvo.InstagramDownload;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -326,6 +444,74 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E90734D52629834E0009528A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.2.0;
+			};
+		};
+		E97D9D6A2711CB9F006F8684 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E9DE4F78262B20B4001C18CE /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E90734D62629834E0009528A /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E90734D52629834E0009528A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		E90734D82629834E0009528A /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E90734D52629834E0009528A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		E90734DA2629834E0009528A /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E90734D52629834E0009528A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
+		};
+		E97D9D6B2711CB9F006F8684 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E97D9D6A2711CB9F006F8684 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		E9DE4F79262B20B4001C18CE /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9DE4F78262B20B4001C18CE /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		E92FD9FE26E4F8ED000FED45 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E92FD9FF26E4F8ED000FED45 /* Model.xcdatamodel */,
+			);
+			currentVersion = E92FD9FF26E4F8ED000FED45 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E91BDD6726219A4300AC3691 /* Project object */;
 }
