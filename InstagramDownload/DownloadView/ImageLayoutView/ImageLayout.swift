@@ -18,13 +18,13 @@ struct ImageLayout: View {
     
     @State var selectedLayout: LayoutType = .double
     
-//    @FetchRequest(
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Insta.user, ascending: true)],
-//        animation: .default)
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Insta.user, ascending: true)],
+        animation: .default)
+
+    var insta: FetchedResults<Insta>
 //
-//    private var insta: FetchedResults<Insta>
-//
-    @State var insta: [Post] = []
+//    @State var insta: [Post] = []
 
     var body: some View {
         
@@ -47,7 +47,7 @@ struct ImageLayout: View {
                     
                     ForEach(insta) { item in
                         
-                        LayoutImageView(selectedLayout: $selectedLayout, instagram: item, insta: $insta)
+                        LayoutImageView(selectedLayout: $selectedLayout, instagram: item, insta: insta)
                     }
                 }
 
@@ -55,9 +55,9 @@ struct ImageLayout: View {
         }
         .preferredColorScheme(.dark)
         .onAppear {
-            for index in 1...3 {
-                insta.append(Post(img: "sang\(index)"))
-            }
+//            for index in 1...3 {
+//                insta.append(Post(img: "sang\(index)"))
+//            }
             
         }
     }
@@ -69,9 +69,9 @@ struct LayoutImageView: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    @State var instagram : Post
-    @State var current : String = ""
-    @Binding var insta : [Post]
+    @State var instagram : Insta
+    @State var current : UUID = UUID()
+    var insta : FetchedResults<Insta>
     @State private var isPresented = false
         
     var body: some View {
@@ -80,30 +80,27 @@ struct LayoutImageView: View {
                 
             case .double:
                 
-//                    Image(uiImage: UIImage(data: instagram.img!)!)
-                Image(instagram.img)
+                    Image(uiImage: UIImage(data: instagram.img!)!)
+//                Image(instagram.img)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .fullScreenCover(isPresented: $isPresented, onDismiss: {
                         
                     }, content: {
-                        FullView(insta: $insta, indexCurrent: $current)
+                        FullView(insta: insta, indexCurrent: $current)
                     })
                     .onTapGesture {
                         withAnimation {
-                            current = instagram.id
+                            current = instagram.id!
                             isPresented.toggle()
                             print(current)
                         }
                     }
                 
             case .adaptive:
-                Image(instagram.img)
+                Image(uiImage: UIImage(data: instagram.img!)!)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-//                Image(uiImage: UIImage(data: instagram.img!)!)
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fill)
         }
     }
 
@@ -114,8 +111,8 @@ struct FullView : View {
 
     @Environment(\.presentationMode) var presentationMode
     
-    @Binding var insta: [Post]
-    @Binding var indexCurrent: String
+    var insta : FetchedResults<Insta>
+    @Binding var indexCurrent: UUID
     @State var fullPreview : Bool = false
 
     var body: some View {
@@ -130,7 +127,7 @@ struct FullView : View {
 
                     ZStack(alignment: .topLeading) {
                         
-                        Image(post.img)
+                        Image(uiImage: UIImage(data: post.img!)!)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: size.width, height: size.height)
@@ -168,7 +165,7 @@ struct FullView : View {
                         
                         ForEach(insta) { post in
                             
-                            Image(post.img)
+                            Image(uiImage: UIImage(data: post.img!)!)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 50, height: 50)
@@ -181,9 +178,8 @@ struct FullView : View {
                                 )
                                 .id(post.id)
                                 .onTapGesture {
-                                    print(post.id)
                                     withAnimation {
-                                        indexCurrent = post.id
+                                        indexCurrent = post.id!
                                     }
                                 }
                         }
