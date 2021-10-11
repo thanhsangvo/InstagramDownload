@@ -8,20 +8,24 @@
 import SwiftUI
 import CoreData
 
+struct Post: Identifiable, Hashable {
+    var id = UUID().uuidString
+    var img: String
+    
+}
+
 struct ImageLayout: View {
     
     @State var selectedLayout: LayoutType = .double
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Insta.user, ascending: true)],
-        animation: .default)
-    
-    private var insta: FetchedResults<Insta>
-    
-    init() {
-        
-    }
-    
+//    @FetchRequest(
+//        sortDescriptors: [NSSortDescriptor(keyPath: \Insta.user, ascending: true)],
+//        animation: .default)
+//
+//    private var insta: FetchedResults<Insta>
+//
+    @State var insta: [Post] = []
+
     var body: some View {
         
         VStack {
@@ -38,15 +42,23 @@ struct ImageLayout: View {
             .padding(.all, 10)
             
             ScrollView {
+                
                 LazyVGrid(columns: selectedLayout.columns, spacing: 1) {
                     
-                    ForEach(insta.indices) { item in
+                    ForEach(insta) { item in
                         
-                        LayoutImageView(selectedLayout: $selectedLayout, instagram: insta[item], index: item)
+                        LayoutImageView(selectedLayout: $selectedLayout, instagram: item, insta: $insta)
                     }
                 }
 
             }
+        }
+        .preferredColorScheme(.dark)
+        .onAppear {
+            for index in 1...3 {
+                insta.append(Post(img: "sang\(index)"))
+            }
+            
         }
     }
 }
@@ -57,146 +69,192 @@ struct LayoutImageView: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    var instagram : Insta
-    
+    @State var instagram : Post
+    @State var current : String = ""
+    @Binding var insta : [Post]
     @State private var isPresented = false
-    var index : Int
-    
+        
     var body: some View {
         
         switch selectedLayout {
+                
             case .double:
                 
-                ZStack(alignment: .bottom) {
-                    Image(uiImage: UIImage(data: instagram.img!)!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .modifier(ContextModifier(instagram: instagram))
-                        .onTapGesture {
-                            self.isPresented.toggle()
-                        }
-                        .fullScreenCover(isPresented: $isPresented) {
-                            didDismiss()
-                        } content: {
-                            FullView(indexCurrent: index)
-                        }
-
-                        
-                    Text(instagram.user!)
-                        .padding(.horizontal)
-                        .background(Color.white.opacity(0.3))
-                        .clipShape(Capsule())
-                }
-                
-                
-            case .adaptive:
-                Image(uiImage: UIImage(data: instagram.img!)!)
+//                    Image(uiImage: UIImage(data: instagram.img!)!)
+                Image(instagram.img)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
+                    .fullScreenCover(isPresented: $isPresented, onDismiss: {
+                        
+                    }, content: {
+                        FullView(insta: $insta, indexCurrent: $current)
+                    })
+                    .onTapGesture {
+                        withAnimation {
+                            current = instagram.id
+                            isPresented.toggle()
+                            print(current)
+                        }
+                    }
+                
+            case .adaptive:
+                Image(instagram.img)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+//                Image(uiImage: UIImage(data: instagram.img!)!)
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fill)
         }
     }
-    
-    func didDismiss() {
-        print("Did Dismiss")
-        }
+
 }
 
 
 struct FullView : View {
-    
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Insta.user, ascending: true)],
-        animation: .default)
-    
-    private var insta: FetchedResults<Insta>
-    
+
     @Environment(\.presentationMode) var presentationMode
-
-    @State var dragOffset = CGSize.zero
-
-    @State var indexCurrent: Int
-
-    @State var scale = false
-    @State private var drag: CGSize = .zero
     
+    @Binding var insta: [Post]
+    @Binding var indexCurrent: String
+    @State var fullPreview : Bool = false
+
     var body: some View {
 
-//        HStack {
-//                Button("<") { if indexCurrent > 0 {
-//                     indexCurrent -= 1
-//                } }
-//                Spacer().frame(width: 40)
-//
-//            Text("\(indexCurrent) | \(insta.count)").font(.largeTitle).foregroundColor(.red)
-//
-//            Button(">") { if indexCurrent < (insta.count - 1) {
-//                     indexCurrent += 1
-//                } }
-//            }
-        
         TabView(selection: $indexCurrent) {
-            
-            ForEach(insta) { item in
-                
-                ZStack(alignment: .topLeading) {
-                    Image(uiImage: UIImage(data: insta[indexCurrent].img!)!)
-                        .tag(indexCurrent)
-                        .scaleEffect(scale ? 2 : 1)
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
-                        .offset(drag)
-                        .gesture(DragGesture().onChanged({ value in
-                            self.drag = value.translation
-                        }))
-                        .onTapGesture(count: 2) {
-                            self.scale.toggle()
-                        }
-                        
-                        
-                    Button {
-                        self.presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "x.circle.fill")
-                            .frame(width: 100, height: 100)
-                            
-                    }
-                    .padding([.top, .leading])
 
+            ForEach(insta) { post in
+                
+                GeometryReader { proxy in
+                    
+                    let size = proxy.size
+
+                    ZStack(alignment: .topLeading) {
+                        
+                        Image(post.img)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: size.width, height: size.height)
+                    }
                 }
-                
-                
+                .tag(post.id)
+                .ignoresSafeArea()
+
             }
         }
-        .tabViewStyle(.automatic)
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
-        .gesture(DragGesture().onChanged({ value in
-            dragOffset = value.translation
-            print(dragOffset)
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .ignoresSafeArea()
+        .preferredColorScheme(.dark)
+        .onTapGesture {
+            withAnimation {
+                fullPreview.toggle()
+            }
+        }
+        .overlay(
             
-//            if dragOffset.height > 200 {
-//                self.presentationMode.wrappedValue.dismiss()
-//            }
-//            else if dragOffset.width > 100 && indexCurrent > 0 {
-//                indexCurrent -= 1
-//                print("-")
-//
-//            }
-//            else if dragOffset.width > -100 && indexCurrent < (insta.count - 1) {
-//                indexCurrent += 1
-//                print("-")
-//
-//            }
-        }))
+            topOverlay()
+            .padding(10)
+            .background(BlurView(style: .systemThinMaterialDark).ignoresSafeArea())
+            .offset(y: fullPreview ? -150 : 0),
+            alignment: .top
+        )
 
+        .overlay(
+            
+            ScrollViewReader { proxy in
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    
+                    HStack(spacing: 10) {
+                        
+                        ForEach(insta) { post in
+                            
+                            Image(post.img)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 50, height: 50)
+                                .cornerRadius(12)
+                                .padding(2)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .strokeBorder(Color.white, lineWidth: 2)
+                                        .opacity(indexCurrent == post.id ? 1 : 0)
+                                )
+                                .id(post.id)
+                                .onTapGesture {
+                                    print(post.id)
+                                    withAnimation {
+                                        indexCurrent = post.id
+                                    }
+                                }
+                        }
+                    }
+                }
+                .frame(height: 65)
+                .background(BlurView(style: .systemUltraThinMaterialDark).ignoresSafeArea())
+                .onChange(of: indexCurrent) { _ in
+
+                    withAnimation {
+                        proxy.scrollTo(indexCurrent, anchor: .bottom)
+                    }
+                }
+            }
+                .offset(y: fullPreview ? 150 : 0),
+            alignment: .bottom
+        )
+    }
+    @ViewBuilder
+    func topOverlay() -> some View {
+        
+        HStack {
+            
+            Button {
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Image(systemName: "arrow.down.square.fill")
+                    .font(.system(size: 20))
+            }
+            
+            Spacer()
+            
+            Button {
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Image(systemName: "xmark.octagon")
+                .font(.system(size: 20))
+                
+            }
+
+        }
     }
 }
 
 
-//struct ImageLayout_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            ImageLayout(selectedLayout: .double)
+struct ImageLayout_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ImageLayout(selectedLayout: .double)
 //            ImageLayout(selectedLayout: .adaptive)
-////                .previewLayout(.sizeThatFits)
-//        }
-//    }
-//}
+//                .previewLayout(.sizeThatFits)
+        }
+    }
+}
+
+
+
+struct BlurView: UIViewRepresentable {
+    
+    var style: UIBlurEffect.Style
+    
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: style))
+        
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
+        
+        
+    }
+    
+}

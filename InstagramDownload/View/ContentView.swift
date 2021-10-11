@@ -15,14 +15,14 @@ struct ContentView: View {
         
         TabView {
             
-//            Home()
+            Home()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//                .tabItem {
-//                    Label("Image", systemImage: "house")
-//                }
+                .tabItem {
+                    Label("Image", systemImage: "house")
+                }
             
             DownloadVideoView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .tabItem {
                     Label("Video", systemImage: "video")
                 }
@@ -32,12 +32,8 @@ struct ContentView: View {
                 .tabItem {
                     Label("Downloaded", systemImage: "square.and.arrow.down")
                 }
-            
-
-//
-            
-
         }
+        .background(Color.red)
         
     }
 }

@@ -18,60 +18,62 @@ struct DownloadVideoView: View {
     
     var body: some View {
         
-        VStack {
+        NavigationView {
             
             VStack {
                 
-                if apiGraph.linkVideo != "" {
+                VStack {
                     
-                    playerView(url: $apiGraph.linkVideo)
-                        .contextMenu {
-                            Button {
-                                self.apiGraph.saveVideoToAlbum(urlVideo: apiGraph.linkVideo)
-                            } label: {
-                                Text("Save to Photo")
+                    if apiGraph.linkVideo != "" {
+                        
+                        playerView(url: $apiGraph.linkVideo)
+                            .frame(height: screen.height * 0.5)
+                            .contextMenu {
+                                Button {
+                                    self.apiGraph.saveVideoToAlbum(urlVideo: apiGraph.linkVideo)
+                                } label: {
+                                    Text("Save to Photo")
+                                }
                             }
-                        }
-                    
-                } else {
-                    
-                    Text("Past url post below then tap button Download ")
-                        .font(.title)
-                        .foregroundColor(Color.white)
+                        
+                    } else {
+                        
+                        Text("Past url post below then tap button Download ")
+                            .font(.title)
+                            .foregroundColor(Color.white)
+                    }
                 }
-            }
-            .frame(height: screen.height * 0.5)
 
-            
-            TextField("URL video post on Instagram ", text: $urlText)
-                .padding()
-                .foregroundColor(.blue)
-                .background(Color.white.opacity(0.5))
-                .cornerRadius(10)
-                .padding(.top)
-            
-            HStack {
                 
-                Button(action: {
-                    apiGraph.startDownloadVideo(urlString: urlText)
+                TextField("URL video post on Instagram ", text: $urlText)
+                    .padding()
+                    .foregroundColor(.blue)
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(10)
+                
+                HStack {
+                    
+                    Button(action: {
+                        apiGraph.startDownloadVideo(urlString: urlText)
 
-                }, label: {
-                    Text("Download")
-                        .fontWeight(.semibold)
-                        .padding(.vertical)
-                        .padding(.horizontal)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                        .clipShape(Capsule())
-                        .shadow(color: Color.black.opacity(0.3), radius: 6, x: 5, y: 5)
-                })
+                    }, label: {
+                        Text("Download")
+                            .fontWeight(.semibold)
+                            .padding(.vertical)
+                            .padding(.horizontal)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                            .clipShape(Capsule())
+                            .shadow(color: Color.black.opacity(0.3), radius: 6, x: 5, y: 5)
+                    })
+                }
+                .padding(.top)
             }
-            .padding(.top)
+            .padding(.horizontal)
+            .navigationBarItems(trailing: ButtonReset)
+            .preferredColorScheme(.dark)
         }
-        .padding(.horizontal)
-        .navigationBarItems(trailing: ButtonReset)
-        .preferredColorScheme(.dark)
     }
     
     var ButtonReset: some View {

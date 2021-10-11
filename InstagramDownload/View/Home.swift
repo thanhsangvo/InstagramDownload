@@ -39,22 +39,19 @@ struct Home: View {
                                 Text("Save to Photo")
                             }
                         }
-                    
                 }
                 else {
-                    Spacer()
                     
                     Text("Past url post below then tap button Download ")
                         .font(.title)
                         .foregroundColor(Color.white)
                     
-                    Spacer()
                 }
                                 
                 TextField("URL post on Instagram ", text: $urlText)
                     .padding()
                     .foregroundColor(.blue)
-                    .background(Color.white)
+                    .background(Color.gray.opacity(0.2))
                     .cornerRadius(8)
                     .shadow(color: Color.black.opacity(0.3), radius: 5, x: 5, y: 5)
                 

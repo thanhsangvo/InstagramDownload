@@ -18,6 +18,8 @@ struct InstagramDownloadApp: App {
     var body: some Scene {
         WindowGroup {
             
+//            DownloadedView()
+            
         ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
 //                .onChange(of: scenePhase) { newScencePhase in

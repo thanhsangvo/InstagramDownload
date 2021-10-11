@@ -141,8 +141,8 @@
 		E932F72526E492A800625C28 /* DownloadView */ = {
 			isa = PBXGroup;
 			children = (
-				E932F72626E4932800625C28 /* SearchImage.swift */,
 				E97B81C726E3C48B001FF04E /* DownloadedView.swift */,
+				E932F72626E4932800625C28 /* SearchImage.swift */,
 				E932F72426E4928100625C28 /* ImageLayoutView */,
 			);
 			path = DownloadView;
