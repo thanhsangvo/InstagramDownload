@@ -70,7 +70,7 @@ struct LayoutImageView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @State var instagram : Insta
-    @State var current : UUID = UUID()
+    @State var current : String = ""
     var insta : FetchedResults<Insta>
     @State private var isPresented = false
         
@@ -81,7 +81,6 @@ struct LayoutImageView: View {
             case .double:
                 
                     Image(uiImage: UIImage(data: instagram.img!)!)
-//                Image(instagram.img)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .fullScreenCover(isPresented: $isPresented, onDismiss: {
@@ -91,9 +90,9 @@ struct LayoutImageView: View {
                     })
                     .onTapGesture {
                         withAnimation {
-                            current = instagram.id!
+                            current = instagram.uid!
                             isPresented.toggle()
-                            print(current)
+//                            print(current)
                         }
                     }
                 
@@ -112,7 +111,7 @@ struct FullView : View {
     @Environment(\.presentationMode) var presentationMode
     
     var insta : FetchedResults<Insta>
-    @Binding var indexCurrent: UUID
+    @Binding var indexCurrent: String
     @State var fullPreview : Bool = false
 
     var body: some View {
@@ -124,14 +123,15 @@ struct FullView : View {
                 GeometryReader { proxy in
                     
                     let size = proxy.size
-
-                    ZStack(alignment: .topLeading) {
                         
                         Image(uiImage: UIImage(data: post.img!)!)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: size.width, height: size.height)
-                    }
+                            .overlay(
+                                Text("\(indexCurrent)").foregroundColor(Color.green)
+                            )
+                    
                 }
                 .tag(post.id)
                 .ignoresSafeArea()
@@ -146,15 +146,17 @@ struct FullView : View {
                 fullPreview.toggle()
             }
         }
+        .onAppear(perform: {
+            print(insta)
+        })
         .overlay(
-            
+
             topOverlay()
             .padding(10)
             .background(BlurView(style: .systemThinMaterialDark).ignoresSafeArea())
             .offset(y: fullPreview ? -150 : 0),
             alignment: .top
         )
-
         .overlay(
             
             ScrollViewReader { proxy in
@@ -174,12 +176,15 @@ struct FullView : View {
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 12)
                                         .strokeBorder(Color.white, lineWidth: 2)
-                                        .opacity(indexCurrent == post.id ? 1 : 0)
+                                        .opacity(indexCurrent == post.uid ? 1 : 0)
                                 )
                                 .id(post.id)
                                 .onTapGesture {
                                     withAnimation {
-                                        indexCurrent = post.id!
+                                        indexCurrent = post.uid!
+                                        print(indexCurrent)
+                                        print(post.uid!)
+
                                     }
                                 }
                         }

@@ -18,7 +18,7 @@ extension Insta {
 
     @NSManaged public var user: String?
     @NSManaged public var img: Data?
-    @NSManaged public var id : UUID?
+    @NSManaged public var uid : String?
 
     var wrappedUser: String {
         user ?? "Unknown"

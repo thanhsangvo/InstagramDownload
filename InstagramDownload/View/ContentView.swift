@@ -20,12 +20,12 @@ struct ContentView: View {
                 .tabItem {
                     Label("Image", systemImage: "house")
                 }
-            
-            DownloadVideoView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .tabItem {
-                    Label("Video", systemImage: "video")
-                }
+//
+//            DownloadVideoView()
+////                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                .tabItem {
+//                    Label("Video", systemImage: "video")
+//                }
             
             DownloadedView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
