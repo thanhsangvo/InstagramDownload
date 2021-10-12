@@ -150,7 +150,6 @@ class APIGraph: NSObject, ObservableObject {
         let newItem = Insta(context: managedObjectContext)
         newItem.user = self.author_name
         newItem.img = image
-        newItem.id = UUID()
         PersistenceController.shared.save()
     }
 

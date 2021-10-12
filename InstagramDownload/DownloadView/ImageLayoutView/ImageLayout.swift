@@ -8,12 +8,6 @@
 import SwiftUI
 import CoreData
 
-struct Post: Identifiable, Hashable {
-    var id = UUID().uuidString
-    var img: String
-    
-}
-
 struct ImageLayout: View {
     
     @State var selectedLayout: LayoutType = .double
@@ -23,9 +17,7 @@ struct ImageLayout: View {
         animation: .default)
 
     var insta: FetchedResults<Insta>
-//
-//    @State var insta: [Post] = []
-
+    
     var body: some View {
         
         VStack {
@@ -54,12 +46,6 @@ struct ImageLayout: View {
             }
         }
         .preferredColorScheme(.dark)
-        .onAppear {
-//            for index in 1...3 {
-//                insta.append(Post(img: "sang\(index)"))
-//            }
-            
-        }
     }
 }
 
@@ -70,7 +56,7 @@ struct LayoutImageView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @State var instagram : Insta
-    @State var current : UUID = UUID()
+    @State var current = NSManagedObjectID()
     var insta : FetchedResults<Insta>
     @State private var isPresented = false
         
@@ -91,7 +77,7 @@ struct LayoutImageView: View {
                     })
                     .onTapGesture {
                         withAnimation {
-                            current = instagram.id!
+                            current = instagram.objectID
                             isPresented.toggle()
                             print(current)
                         }
@@ -112,7 +98,7 @@ struct FullView : View {
     @Environment(\.presentationMode) var presentationMode
     
     var insta : FetchedResults<Insta>
-    @Binding var indexCurrent: UUID
+    @Binding var indexCurrent: NSManagedObjectID
     @State var fullPreview : Bool = false
 
     var body: some View {
@@ -124,16 +110,17 @@ struct FullView : View {
                 GeometryReader { proxy in
                     
                     let size = proxy.size
-
-                    ZStack(alignment: .topLeading) {
                         
                         Image(uiImage: UIImage(data: post.img!)!)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: size.width, height: size.height)
-                    }
+//                            .overlay(
+//                                Text("\(post.objectID)")
+//                                    .foregroundColor(Color.green)
+//                            )
                 }
-                .tag(post.id)
+                .tag(post.objectID)
                 .ignoresSafeArea()
 
             }
@@ -174,12 +161,12 @@ struct FullView : View {
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 12)
                                         .strokeBorder(Color.white, lineWidth: 2)
-                                        .opacity(indexCurrent == post.id ? 1 : 0)
+                                        .opacity(indexCurrent == post.objectID ? 1 : 0)
                                 )
-                                .id(post.id)
+                                .id(post.objectID)
                                 .onTapGesture {
                                     withAnimation {
-                                        indexCurrent = post.id!
+                                        indexCurrent = post.objectID
                                     }
                                 }
                         }
