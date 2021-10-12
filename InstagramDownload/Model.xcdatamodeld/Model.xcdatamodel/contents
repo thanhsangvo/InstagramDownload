@@ -6,6 +6,6 @@
         <attribute name="user" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Insta" positionX="-9" positionY="54" width="128" height="74"/>
+        <element name="Insta" positionX="-9" positionY="54" width="128" height="59"/>
     </elements>
 </model>

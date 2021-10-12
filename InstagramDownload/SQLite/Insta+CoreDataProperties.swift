@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-extension Insta {
+extension Insta: Identifiable {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Insta> {
         return NSFetchRequest<Insta>(entityName: "Insta")
@@ -24,8 +24,4 @@ extension Insta {
         user ?? "Unknown"
     }
 
-}
-
-extension Insta : Identifiable {
-    
 }
