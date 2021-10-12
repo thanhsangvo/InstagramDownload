@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-struct Card: Identifiable, Decodable, Hashable {
-    
-    var id: String
-    var author: String
-    var url: String
-    var download_url: String
-    
-}
-
-
 struct VideoModel: Identifiable, Decodable, Hashable {
     
     var id = UUID().uuidString
